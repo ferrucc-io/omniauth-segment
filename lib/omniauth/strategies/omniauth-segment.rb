@@ -10,7 +10,11 @@ module OmniAuth
              site: 'https://id.segmentapis.com',
              authorize_url: 'https://id.segmentapis.com/oauth2/auth',
              token_url: 'https://id.segmentapis.com/oauth2/token'
-             
+         
+      info do
+        access_token.params.to_h
+      end
+
       def scope
         options[:scope]
       end
