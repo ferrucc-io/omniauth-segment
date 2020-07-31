@@ -39,18 +39,26 @@ Add provider in omniauth.rb along with CLIENT_ID and CLIENT_SECRET
 
 e.g.
 ```ruby
-provider :segment, SEGMENT_CLIENT_ID, SEGMENT_CLIENT_SECRET, callback_url: SEGMENT_CALLBACK_URL
+provider :segment, SEGMENT_CLIENT_ID, SEGMENT_CLIENT_SECRET, , { 
+        callback_url: SEGMENT_CALLBACK_URL,
+        scope: SEGMENT_SCOPE
+    }
 ```
 
 Obtain your CLIENT_ID/CLIENT_SECRET by registering your app on: https://segment.com/partners/integration/
 
-After you have the gem running and the configuration is done, you can get to the follow url to log the user in:
+After you have the gem running and the configuration is done, you can go to this url to log the user in:
 
 http://localhost:3000/auth/segment
+
+### Where are the token and the source names?
+
+From your callback controller you can find your token: `request.env['omniauth.auth'].credentials.token` and the source names: `request.env['omniauth.auth'].info.source_names` along with the rest information that Segment returns.
 
 Now just follow the README at: https://github.com/omniauth/omniauth
 
 ### Questions
+
 For any question, fell free to send me a tweet [@0xferruccio](https://twitter.com/0xferruccio)
 
 ## Contributing
